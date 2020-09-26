@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章列表页面</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/list/list.css">
+  <script src="../js/vue.js"></script>
+  <script src="../js/axios.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="title">博客文章列表</div>
+    <div class="map"><a href="/public/html/home.html"><b>博客首页</b></a> >> 站点地图</div>
+    <div class="list" id="list">
+      <div>最新文章</div>
+      <ul>
+        <li v-for="item in articleList" :key="item.id"><a href="item.link">{{ item.title }}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="../js/list/list.js"></script>
+</body>
+
+</html>

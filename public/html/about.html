@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>人生不止于技术</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/home/header.css">
+  <link rel="stylesheet" href="../css/about/about.css">
+  <script src="../js/axios.js"></script>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div class="header-title">
+        <a class="title-name" href="#">曹磊 | 博客</a>
+        <!-- 导航区域 -->
+        <ul>
+          <li><a href="/public/html/home.html">首页</a></li>
+          <li><a href="/public/html/list.html">文章列表</a></li>
+          <li><a href="/public/html/about.html">人生不止于技术</a></li>
+          <li><a href="/public/html/message.html">留言吧</a></li>
+        </ul>
+        <!-- 搜索框部分 -->
+        <div class="header-input">
+          <input type="text" placeholder="输入关键字查找" />
+          <button class="search-btn">搜索</button>
+        </div>
+      </div>
+    </header>
+    <div class="main-content">
+      <!-- 主体部分的左边部分 -->
+      <div class="content-left">
+        <!-- 关于我关于博客 -->
+        <div class="left-main">
+          <div class="main-list">
+            <div>关于我</div>
+            <p>我是一个感性的人</p>
+            <p>我热爱前端</p>
+          </div>
+        </div>
+
+        <!-- 发表评论 -->
+        <div id="send-comment" class="send-comment">
+          <!-- 留言详情 -->
+          <div id="comments-list" class="left-comment">
+            <span class="comment-num">关于：目前有 {{ blogCount }} 条留言</span>
+            <div class="left-comment-item" v-for="item in comments_list" :key="item.id">
+              <span class="item-mes"><b>{{ item.user_name }}</b>：{{ item.options }} 发表于 {{ item.ctime }} <a
+                  href="#response" @click="reply(item.id, item.user_name)">[回复]</a></span>
+              <div class="item-text">{{ item.comments }}</div>
+            </div>
+          </div>
+
+          <input type="hidden" id="comment_reply" v-model="c_reply" />
+          <input type="hidden" id="comment_reply_name" v-model="c_reply_name">
+          <span id="response">发表评论</span>
+          <div class="comment-form">
+            <input type="text" placeholder="小可爱的昵称" id="comment_name" v-model="c_name" />
+            <input type="text" placeholder="邮箱(评论被回复时小可爱能收到通知哦)" id="comment_email" v-model="c_email" />
+          </div>
+          <div class="comment-text">
+            <textarea id="comment_content" cols="30" rows="10" placeholder="欢迎留言哦！但是小可爱不要调皮哦！"
+              v-model="c_content"></textarea>
+          </div>
+          <div class="v-code">
+            <input type="text" placeholder="验证码" v-model="c_code" id="comment_code" />
+            <span v-html="vCode" class="vcode" @click="changeCode()"></span>
+          </div>
+          <button class="submit-mes" @click="sendMes()">提交评论</button>
+        </div>
+      </div>
+      <!-- 主体部分的右边部分 -->
+      <div class="content-right">
+        <!-- 随机标签云 -->
+        <div id="randomTags" class="right-module rantags">
+          <div class="title">随机标签云</div>
+          <div class="tags">
+            <a :href="item.link" v-for="(item, index) in tags" :key="index"
+              :style="{color: randomColor(), fontSize: randomSize()}">{{ item.tag }}</a>
+          </div>
+        </div>
+        <!-- 最近热门 -->
+        <div id="hot" class="right-module hot">
+          <div class="title">最近热门</div>
+          <ul>
+            <li v-for="(item, index) in hotList" :key="index">
+              <a :href="item.link">{{ item.title }}</a>
+            </li>
+          </ul>
+        </div>
+        <!-- 最近评论 -->
+        <div id="comment" class="right-module comment">
+          <div class="title">最近评论</div>
+          <ul>
+            <li v-for="(item, index) in commentList" :key="index">
+              <div class="module-name">
+                <span>{{ item.name }}</span>
+                <span>[{{ item.date }}]</span>
+              </div>
+              <p class="module-text">{{ item.comment }}</p>
+            </li>
+          </ul>
+        </div>
+        <!-- 友情链接 -->
+        <div class="right-module friend">
+          <div class="title">友情链接</div>
+          <div class="friend-span">
+            <span><a href="#">小可爱</a></span>
+            <span><a href="#">小清新</a></span>
+            <span><a href="#">小笨蛋</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/base.js"></script>
+  <script src="../js/about/about.js"></script>
+</body>
+
+</html>

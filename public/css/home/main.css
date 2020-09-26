@@ -1,0 +1,291 @@
+.main-content {
+  width: 100%;
+  display: flex;
+}
+
+/* 主体的左边部分 */
+.main-content .content-left {
+  flex: 4;
+  position: relative;
+}
+
+/* 旋转的魔方区域 */
+.margic {
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  left: 8%;
+  top: 21%;
+  transform-style: preserve-3d;
+  animation: move 10s linear alternate infinite;
+}
+
+.margic div {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-size: 80px;
+  line-height: 200px;
+  border: 1px solid #ff6f6f;
+  box-sizing: border-box;
+}
+
+.margic div:nth-of-type(1) {
+  background-color: rgba(0, 28, 148, 0.1);
+  transform: rotateX(270deg) translateZ(50px);
+}
+
+.margic div:nth-of-type(2) {
+  background-color: rgba(200, 158, 18, 0.1);
+  transform: rotateY(271deg) translateZ(49px);
+}
+
+.margic div:nth-of-type(3) {
+  background-color: rgba(153, 154, 154, 0.1);
+  transform: rotateZ(0deg) translateZ(48px);
+}
+
+.margic div:nth-of-type(4) {
+  background-color: rgba(10, 233, 128, 0.1);
+  transform: rotateY(90deg) translateZ(49px);
+}
+
+.margic div:nth-of-type(5) {
+  background-color: rgba(225, 29, 86, 0.1);
+  transform: rotateZ(0deg) translateZ(50px);
+}
+
+.margic div:nth-of-type(6) {
+  background-color: rgba(135, 128, 122, 0.1);
+  transform: rotateX(90deg) translateZ(49px);
+}
+
+@keyframes move {
+  0% {
+    transform: translate(-50%, -50%) rotate3d(1, 1, 1, 0);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate3d(2, 3, 2, 360deg);
+  }
+}
+
+/* 人生logo */
+.main-content .content-left .logo-text {
+  margin-left: 10px;
+  position: fixed;
+}
+
+.main-content .content-left .logo-text span {
+  width: 30px;
+  display: inline-block;
+  font-size: 50px;
+  text-align: center;
+  font-family: "caolei";
+  margin-left: 20px;
+  position: absolute;
+  text-shadow: 8px 3px 8px #ff6f6f;
+}
+
+.main-content .content-left .logo-text::after {
+  content: "";
+  clear: both;
+  display: inline-block;
+}
+
+.main-content .content-left .logo-text span:nth-child(1) {
+  top: 168px;
+}
+
+.main-content .content-left .logo-text span:nth-child(2) {
+  left: 80px;
+  top: 251px;
+}
+
+/* 每日一句区域 */
+.main-content .content-left .every-day {
+  position: absolute;
+  left: 350px;
+  width: 500px;
+  height: 95px;
+  /* border: 1px solid green; */
+  padding: 0 8px 0 14px;
+  box-shadow: 8px 8px 6px #0e0e0e;
+  font-family: "caolei";
+}
+
+.main-content .content-left .every-day h5 {
+  height: 1px;
+  color: #d94600;
+  font-weight: 700;
+}
+
+.main-content .content-left .every-day .day-auth {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px 0 0;
+}
+
+/* 文章区域 */
+.main-content .content-left .article-list {
+  position: absolute;
+  width: 520px;
+  left: 350px;
+  top: 150px;
+}
+
+.main-content .content-left .article-list .article-item {
+  width: 98%;
+  margin: 0 auto;
+  box-shadow: 10px 14px 8px #0e0e0e;
+  margin-bottom: 20px;
+  padding: 5px 0 10px 0;
+}
+
+.main-content .content-left .article-list .article-item .article-title {
+  font-size: 30px;
+  color: #ff9f9f;
+}
+
+.tishi {
+  font-size: 12px;
+  padding: 12px 10px;
+}
+
+.main-content .content-left .article-list .article-item .article-text {
+  margin-top: 8px;
+  height: 78px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  padding: 4px 0;
+  word-spacing: 5px;
+  letter-spacing: 8px;
+  font-size: 16px;
+  color: #d5d5d5;
+}
+
+.main-content .content-left .article-list .article-item .article-tag {
+  font-size: 15px;
+  margin-top: 8px;
+  color: #ff9f9f;
+}
+
+/* 分页组件区域 */
+.main-content .content-left .article-list .page-tool {
+  position: fixed;
+  width: 30px;
+  left: 250px;
+  top: 90px;
+  box-shadow: 10px 14px 8px #0e0e0e;
+}
+
+.main-content .content-left .article-list .page-tool span {
+  display: inline-block;
+  background: none;
+  outline: none;
+  border: none;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  color: #c0c0c0;
+  font-size: 18px;
+  font-family: 'caolei';
+}
+
+.main-content .content-left .article-list .page-tool ul>li {
+  text-align: center;
+  padding: 20px 0;
+  cursor: pointer;
+  color: #c0c0c0;
+  font-weight: bold;
+}
+
+.main-content .content-left .article-list .page-tool ul>li.active {
+  color: #ff6f6f;
+}
+
+/* 主体右边部分 */
+.main-content .content-right {
+  flex: 2;
+  padding: 20px 0 0 40px;
+}
+
+/* 随机标签云 */
+.main-content .content-right .right-module {
+  width: 300px;
+  margin-bottom: 30px;
+  box-shadow: 6px 6px 8px #0e0e0e;
+  padding: 10px;
+}
+
+.main-content .content-right .right-module .title {
+  padding-bottom: 10px;
+}
+
+.main-content .content-right .right-module .tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main-content .content-right .rantags a {
+  padding: 4px 6px;
+  word-break: break-all;
+}
+
+/* 最近热门 */
+.main-content .content-right .hot>ul li {
+  margin-bottom: 10px;
+}
+
+.main-content .content-right .hot .title {
+  color: aquamarine;
+}
+
+.main-content .content-right .comment .title {
+  color: burlywood;
+}
+
+.main-content .content-right .friend .title {
+  color: #006bd7;
+}
+
+.main-content .content-right .comment>ul li {
+  box-shadow: 6px 6px 8px #0e0e0e;
+}
+
+.main-content .content-right .comment>ul li .module-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-content .content-right .comment>ul li .module-name span:nth-child(2) {
+  color: aliceblue;
+  font-family: 'caolei';
+  font-size: 14px;
+}
+
+.main-content .content-right .comment>ul li .module-text {
+  padding-bottom: 6px;
+  color: aliceblue;
+}
+
+/* 友情链接 */
+.main-content .content-right .friend .friend-span {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.main-content .content-right .friend .friend-span span {
+  display: inline-block;
+  width: 50%;
+  margin-bottom: 8px;
+}
+
+.main-content .content-right .friend .friend-span span a {
+  color: aliceblue;
+}

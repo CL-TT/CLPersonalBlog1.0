@@ -1,0 +1,44 @@
+body {
+  background-image: url('../../image/timg5.gif');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+.wrap {
+  width: 100%;
+  height: 100%;
+  min-width: 1300px;
+  display: inline-block;
+}
+
+.wrap .title {
+  width: 200px;
+  margin: 30px auto 20px;
+  font-size: 30px;
+}
+
+.wrap .map {
+  padding-left: 40px;
+}
+
+.wrap .list {
+  width: 90%;
+  margin: 20px auto;
+  box-shadow: 8px 8px 6px #0e0e0e;
+}
+
+.wrap .list div {
+  padding: 6px 20px;
+}
+
+.wrap .list ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.wrap .list ul li {
+  width: 20%;
+  padding: 10px 8px;
+}

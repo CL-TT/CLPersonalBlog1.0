@@ -1,0 +1,168 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#82c0ff, #158aff, #005279, #004160);
+}
+
+/* 登录的部分 */
+.loading-wrap {
+  overflow: hidden;
+}
+
+.master-list {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 230px;
+  margin-left: -15px;
+}
+
+/* 怪物的共同部分 */
+.master {
+  width: 100px;
+  height: 100px;
+  margin-left: 30px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: jumping 0.8s infinite alternate;
+  /*infinite是循环的意思，alternate是反复的意思来回都有*/
+}
+
+/* 怪物的眼睛 */
+.master .eye {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* 眼睛里面的小球 */
+.master .eye .eyeball {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  position: absolute;
+  animation: eyesmove 1.5s infinite alternate;
+}
+
+.master .eye .eyeball.ball1 {
+  background-color: #0c0c63;
+}
+
+.master .eye .eyeball.ball2 {
+  background-color: #ff8811;
+}
+
+.master .eye .eyeball.ball3 {
+  background-color: aqua;
+}
+
+/* 怪物的嘴巴 */
+.master .mouth {
+  width: 50px;
+  height: 12px;
+  background-color: white;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+.master .mouth.morange {
+  background-color: #ff9326;
+}
+
+.master.orange {
+  background-color: #ff8811;
+}
+
+.master.red {
+  background-color: #408080;
+  animation-delay: 1s;
+}
+
+.master.blue {
+  background-color: #0c0c63;
+  animation-delay: 0.5s;
+}
+
+/* 利用伪元素来制作怪物的角部分 */
+.master::before,
+.master::after {
+  content: "";
+  width: 58px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: -20px;
+}
+
+.master::before {
+  transform: translateX(-86%) rotate(45deg);
+}
+
+.master::after {
+  transform: translateX(-21%) rotate(-45deg);
+  /*第一个是平移第二个是旋转*/
+}
+
+/* 怪物跳跃的动画 */
+@keyframes jumping {
+  50% {
+    top: 0;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  100% {
+    top: -50px;
+
+    box-shadow: 0px 160px 20px rgba(0, 0, 0, 0.26);
+  }
+}
+
+/* 怪物眼睛移动的动画 */
+@keyframes eyesmove {
+
+  0%,
+  10% {
+    left: -3px;
+  }
+
+  90%,
+  100% {
+    left: 27px;
+  }
+}
+
+/* 进度条部分 */
+.loading {
+  width: 400px;
+  height: 10px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 60px auto;
+  overflow: hidden;
+}
+
+.loading .bar {
+  width: 0%;
+  height: 100%;
+  background-color: #e55a54;
+}
+
+.loading-wrap.finish {
+  opacity: 0;
+  background: none !important;
+}

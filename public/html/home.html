@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>博客首页</title>
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/home/header.css" />
+  <link rel="stylesheet" href="../css/home/main.css" />
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div class="header-title">
+        <a class="title-name" href="#">曹磊 | 博客</a>
+        <!-- 导航区域 -->
+        <ul>
+          <li><a href="/public/html/home.html">首页</a></li>
+          <li><a href="/public/html/list.html">文章列表</a></li>
+          <li><a href="/public/html/about.html">人生不止于技术</a></li>
+          <li><a href="/public/html/message.html">留言吧</a></li>
+        </ul>
+        <!-- 搜索框部分 -->
+        <div class="header-input" id="search">
+          <input type="text" placeholder="输入关键字查找" v-model="searchWord" />
+          <span class="search-btn" @click="search">搜索</span>
+        </div>
+      </div>
+    </header>
+    <div class="main-content">
+      <!-- 主体部分的左边部分 -->
+      <div class="content-left">
+        <div class="margic">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="logo-text">
+          <span>未来和明天</span>
+          <span>哪一个先来呢</span>
+        </div>
+        <!-- 每日一句部分 需要使用vue进行数据绑定-->
+        <div id="every-day" class="every-day">
+          <h5>每日一句</h5>
+          <div v-html="getContent" class="day-auth">
+            <!-- <span>努力吧， 少年！</span>
+            <span>------曹磊</span> -->
+          </div>
+        </div>
+        <!-- 文章区域 -->
+        <div id="article-list" class="article-list">
+          <div class="article-item" v-for="item in article_list" :key="item.id">
+            <a :href="item.link" class="article-title">{{ item.title }}</a>
+            <div class="tishi">小可爱可以点击标题查看详情哦</div>
+            <div class="article-text" v-html="item.content"></div>
+            <div class="article-tag">
+              发布于 {{ item.ctime }} | 浏览({{ item.views }}) | Tags: {{
+                item.tags }}
+            </div>
+          </div>
+
+          <!-- 分页插件区域 -->
+          <div class="page-tool">
+            <span @click="jumpPage(1)">首页</span>
+            <ul v-for="(item, index) in pageNumList" :key="index">
+              <li :class="{'active': item.text == page}" @click="jumpPage(item.page)">{{ item.text }}</li>
+            </ul>
+            <span @click="jumpPage(pageNumList.length - 2)">尾页</span>
+          </div>
+        </div>
+      </div>
+      <!-- 主体部分的右边部分 -->
+      <div class="content-right">
+        <!-- 随机标签云 -->
+        <div id="randomTags" class="right-module rantags">
+          <div class="title">随机标签云</div>
+          <div class="tags">
+            <a :href="item.link" v-for="(item, index) in tags" :key="index"
+              :style="{color: randomColor(), fontSize: randomSize()}">{{ item.tag }}</a>
+          </div>
+        </div>
+        <!-- 最近热门 -->
+        <div id="hot" class="right-module hot">
+          <div class="title">最近热门</div>
+          <ul>
+            <li v-for="(item, index) in hotList" :key="index">
+              <a :href="item.link">{{ item.title }}</a>
+            </li>
+          </ul>
+        </div>
+        <!-- 最近评论 -->
+        <div id="comment" class="right-module comment">
+          <div class="title">最近评论</div>
+          <ul>
+            <li v-for="(item, index) in commentList" :key="index">
+              <div class="module-name">
+                <span>{{ item.name }}</span>
+                <span>[{{ item.date }}]</span>
+              </div>
+              <p class="module-text">{{ item.comment }}</p>
+            </li>
+          </ul>
+        </div>
+        <!-- 友情链接 -->
+        <div class="right-module friend">
+          <div class="title">友情链接</div>
+          <div class="friend-span">
+            <span><a href="#">小可爱</a></span>
+            <span><a href="#">小笨蛋</a></span>
+            <span><a href="#">小清新</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/axios.js"></script>
+  <script src="../js/base.js"></script>
+  <script src="../js/home/home.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+.wrap {
+  width: 100%;
+  height: 100%;
+  min-width: 1300px;
+}
+
+.header {
+  width: 100%;
+  min-width: 1200px;
+  height: 50px;
+  box-shadow: 1px 1px 2px #4f4f4f;
+}
+
+.header-title {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header-title .title-name {
+  display: inline-block;
+  margin-left: 58px;
+  font-size: 20px;
+  -webkit-text-stroke: 1px #ff5555;
+  color: transparent;
+}
+
+/* 导航区域 */
+.header-title>ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 155px;
+}
+
+.header-title>ul li {
+  padding-left: 40px;
+}
+
+.header-title>ul li a {
+  text-shadow: 5px 3px 5px #ff6f6f;
+  font-size: 22px;
+}
+
+
+
+/* 搜索输入框区域 */
+input::-webkit-input-placeholder {
+  color: aliceblue;
+  font-size: 16px;
+  font-family: "caolei";
+}
+
+
+.header-title .header-input {
+  margin-left: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.header-title .header-input input {
+  border-radius: 8px;
+  outline: none;
+  height: 26px;
+  width: 220px;
+  padding: 3px 10px;
+  border: none;
+  background: none;
+  box-shadow: 6px 6px 8px #0e0e0e;
+  color: #ff5555;
+}
+
+.header-title .header-input .search-btn {
+  border-radius: 8px;
+  text-align: center;
+  width: 70px;
+  height: 26px;
+  color: #979797;
+  margin-left: 20px;
+  line-height: 28px;
+  cursor: pointer;
+  box-shadow: 6px 6px 8px #0e0e0e;
+  outline: none;
+  background: none;
+  border: none;
+  font-family: 'caolei';
+  color: #ff6f6f;
+}
